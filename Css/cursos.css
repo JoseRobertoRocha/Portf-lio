@@ -1,0 +1,180 @@
+/* ===== Títulos / barra superior ===== */
+.page-hero{ padding: clamp(22px, 5vw, 40px) 0 10px; }
+.page-hero h1{ margin:0 0 6px; font-size: clamp(26px, 4.6vw, 40px); }
+.page-hero p{ color: var(--muted); max-width: 70ch; }
+
+/* ===== Filtros (chips) ===== */
+.filters{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 6px; }
+.filters .chip{ user-select:none }
+
+/* ===== Galeria (auto-fit 1..N colunas) ===== */
+.gallery{
+  list-style:none; padding:0; margin:16px 0 0;
+  display:grid; gap: clamp(10px, 2vw, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ===== Card do curso ===== */
+.card-course{
+  position:relative; overflow:hidden; border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card-course:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.40);
+  border-color: rgba(255,255,255,.18);
+}
+
+.card-course figure{ margin:0; }
+.card-course .shot{
+  width:100%; aspect-ratio: 16/9; object-fit:cover; display:block;
+  filter: saturate(110%);
+  transition: transform .35s ease, filter .35s ease;
+  border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+}
+.card-course:hover .shot{ transform: scale(1.03); filter: saturate(120%); }
+
+/* Legenda sobreposta */
+.card-course .overlay{
+  position:absolute; inset:0; display:flex; align-items:end;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  opacity:0; transition: opacity .3s ease;
+  padding:12px;
+  pointer-events:none;           /* evita bloquear cliques no link/figura */
+}
+.card-course:hover .overlay{ opacity:1; }
+
+/* Acessível ao teclado: mostra overlay quando o link interno recebe foco */
+.card-course:focus-within .overlay{ opacity:1; }
+
+.card-course figcaption{
+  width:100%;
+  color:#eef6ff; font-weight:600;
+  text-shadow:0 1px 0 rgba(0,0,0,.5);
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.card-course .pill{
+  padding:6px 10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+  font-size:.85rem; color:#dfe8ff;
+  white-space:nowrap;
+}
+
+/* ===== Lightbox ===== */
+.lightbox{
+  position:fixed; inset:0; z-index:9999; display:none;
+  background: rgba(5, 8, 18, .72); backdrop-filter: blur(8px);
+}
+.lightbox.open{ display:grid; place-items:center; }
+.lightbox .frame{
+  width:clamp(300px, 96vw, 1100px);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px; box-shadow: var(--shadow);
+  overflow:hidden; position:relative;
+}
+.lightbox .media{
+  width:100%;
+  max-height: min(72vh, 70rem);       /* evita estourar a tela */
+  background:#000; display:grid; place-items:center;
+}
+.lightbox img{ width:100%; height:100%; object-fit:contain; }
+
+.lightbox .legend{
+  padding:12px 14px; color:#eaf2ff;
+  display:flex; gap:10px; align-items:center; justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.lightbox .legend .title{ font-weight:700 }
+.lightbox .legend .meta{ color:var(--muted); font-size:.95rem }
+
+/* Controles */
+.lightbox .ctrls{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none;
+}
+.lightbox .btn-ctrl{
+  pointer-events:auto; user-select:none; cursor:pointer;
+  width:52px; height:52px; margin:0 8px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  display:grid; place-items:center; font-size:24px;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.lightbox .btn-ctrl:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+.lightbox .btn-close{
+  position:absolute; top:10px; right:10px;
+  width:44px; height:44px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.08);
+  display:grid; place-items:center; cursor:pointer; font-size:20px;
+}
+
+/* ===== Acessibilidade (foco) ===== */
+.card-course a:focus-visible,
+.lightbox .btn-ctrl:focus-visible,
+.lightbox .btn-close:focus-visible{
+  outline: 2px solid var(--c1);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* ===== Touch/mobile: não depender de hover =============================== */
+@media (hover: none){
+  .card-course .overlay{ opacity:1; }      /* legenda sempre visível em touch */
+  .card-course:hover .shot{ transform:none; filter:saturate(110%); }
+}
+
+/* ===== Telas bem pequenas ================================================= */
+@media (max-width: 420px){
+  .card-course{ border-radius:14px; }
+  .card-course .pill{ font-size:.8rem; padding:5px 8px; }
+  .lightbox .btn-ctrl{ width:46px; height:46px; font-size:22px; }
+  .lightbox .btn-close{ width:40px; height:40px; }
+}
+
+/* ===== Reduzir movimento (pref) ========================================== */
+@media (prefers-reduced-motion: reduce){
+  .card-course, .card-course .shot, .card-course .overlay,
+  .lightbox .btn-ctrl{ transition:none; }
+}
+/* ===== Legend com título + meta + legenda (multi-linha) ===== */
+.lightbox .legend{
+  padding:12px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-start;
+}
+.lightbox .legend .title{
+  font-weight:800;
+  letter-spacing:.2px;
+}
+.lightbox .legend .meta{
+  color:var(--muted);
+  font-size:.95rem;
+  align-self:flex-end;  /* fica à direita quando a tela é estreita */
+}
+.lightbox .legend .caption{
+  color:#eaf2ff;
+  opacity:.92;
+  line-height:1.5;
+  white-space: pre-wrap; /* preserva quebras: \n no data-caption viram novas linhas */
+}
+
+/* Layout em telas médias+ (título/meta em linha, legenda abaixo) */
+@media (min-width: 640px){
+  .lightbox .legend{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title meta"
+      "caption caption";
+    gap:8px 12px;
+  }
+  .lightbox .legend .title{ grid-area: title; }
+  .lightbox .legend .meta{ grid-area: meta; align-self:center; }
+  .lightbox .legend .caption{ grid-area: caption; }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Galeria de Cursos — Jose Roberto Rocha</title>
+  <meta name="description" content="Galeria de cursos concluídos por Jose Roberto Rocha, com imagens e legendas." />
+  <meta name="theme-color" content="#0a1024" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Galeria de Cursos — Jose Roberto Rocha" />
+  <meta property="og:description" content="Cursos concluídos, certificações e treinamentos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/img/cover.jpg" />
+  <meta property="og:url" content="https://seu-dominio-ou-github-pages/cursos.html" />
+
+  <!-- Fontes e CSS global -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\modelo.css" />
+  <!-- CSS específico da página -->
+  <link rel="stylesheet" href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\cursos.css" />
+</head>
+<body>
+  <canvas id="techbg" class="tech-canvas" aria-hidden="true"></canvas>
+  <div class="bg-ornaments" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap row">
+      <a href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\index.html" class="brand" aria-label="Voltar à página inicial">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>JOSE ROBERTO ROCHA</b><br>
+          <small style="opacity:.72">Analista de Suporte • ERP/PDV</small>
+        </div>
+      </a>
+      <nav aria-label="Principal">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <div id="site-nav" class="nav-links" role="navigation">
+          <a href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\index.html">Início</a>
+          <a href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Curriculo\Jose Robero Rocha.pdf" download>Baixar Currículo (PDF)</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero wrap">
+      <h1>Galeria de Cursos</h1>
+      <p>Seleção de certificações e treinamentos concluídos. Clique em qualquer item para ampliar e ler a legenda completa.</p>
+    </section> <!-- ✅ fechando a section do hero -->
+
+    <!-- Galeria -->
+    <section class="wrap">
+      <ul class="gallery" id="galeriaCursos">
+
+        <!-- Windows Server -->
+        <li class="card-course" data-tags="windows server">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Windows Server 2016.jpg"
+              data-caption="Windows Server 2016 — Active Directory, GPO, Servidor de Arquivos, integração com Azure, Backup, Servidor Web (IIS) e DHCP.">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Windows Server 2016.jpg" alt="Certificado Windows Server 2016" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">Windows Server 2016</span>
+                <span class="pill">Administração</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+        <!-- Segurança da Informação -->
+        <li class="card-course" data-tags="seguranca informacao">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Segurança da Informação.jpg"
+              data-caption="Segurança da Informação — conceitos, políticas, autenticação, backups, criptografia e resposta a incidentes.">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Segurança da Informação.jpg" alt="Certificado de Segurança da Informação" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">Segurança da Informação</span>
+                <span class="pill">Conceitos</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+        <!-- pfSense -->
+        <li class="card-course" data-tags="pfsense redes firewall">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\pfSense! v2025.jpg"
+              data-caption="Firewall pfSense (v2025) — criação de regras, NAT, VPNs e monitoramento.">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\pfSense! v2025.jpg" alt="Certificado pfSense v2025" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">pfSense v2025</span>
+                <span class="pill">Gerenciamento</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+        <!-- Suporte Técnico -->
+        <li class="card-course" data-tags="suporte tecnico windows linux">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\suporte técnico.jpg"
+              data-caption="Suporte Técnico — troubleshooting, documentação, melhores práticas de atendimento e escalonamento (Windows/Linux).">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\suporte técnico.jpg" alt="Certificado de Suporte Técnico" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">Suporte Técnico</span>
+                <span class="pill">Windows / Linux</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+        <!-- Excel Avançado -->
+        <li class="card-course" data-tags="excel">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Excel avançado.jpg"
+              data-caption="Excel Avançado — PROCX, Tabelas Dinâmicas, Power Query e automações de rotina.">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\Excel avançado.jpg" alt="Certificado de Excel Avançado" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">Excel Avançado</span>
+                <span class="pill">Produtividade</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+        <!-- Bancos de Dados -->
+        <li class="card-course" data-tags="bancos dados sql">
+          <figure>
+            <a
+              href="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\bancos de dados.jpg"
+              data-caption="Banco de Dados e SQL — modelagem, JOINs, índices e boas práticas (MySQL / PostgreSQL).">
+              <img class="shot" src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Certificados\bancos de dados.jpg" alt="Certificado de Banco de Dados e SQL" loading="lazy">
+            </a>
+            <div class="overlay">
+              <figcaption>
+                <span class="title">Bancos de Dados</span>
+                <span class="pill">SQL</span>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <small>© <span id="y"></span> Jose Roberto Rocha — Galeria de Cursos.</small>
+  </footer>
+
+  <!-- JS global e JS específico da página -->
+  <script defer src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\cursos.js"></script>
+  <script defer src="C:\Users\Coneccta Sistemas\Desktop\Jose Roberto Junior\Script.js"></script>
+</body>
+</html>
