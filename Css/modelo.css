@@ -71,7 +71,9 @@ nav{ position:relative; }
   height:40px; padding:0 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.06); color:var(--fg); cursor:pointer;
 }
-.nav-links{ display:flex; gap:16px; align-items:center; }
+.nav-links{
+  display:flex; gap:16px; align-items:center;
+}
 .nav-links a{
   padding:10px 12px; border-radius:10px; border:1px solid transparent;
 }
@@ -102,44 +104,22 @@ nav{ position:relative; }
 }
 h1{ font-size: clamp(28px, 5vw, 48px); line-height:1.1; margin:10px 0 0; }
 .lead{ font-size:1.05rem; color:var(--muted); max-width:65ch }
-
-/* ===== Botões do herói (AJUSTE) ========================================== */
-/* mantém flex + deixa todos os botões do mesmo tamanho e alinhados */
-.hero-actions{
-  display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 8px;
-  align-items:stretch;
-}
-.hero-actions > .btn,
-.hero-actions > .cta{
-  flex: 1 1 200px;        /* todos crescem/encolhem igualmente e quebram quando faltar espaço */
-  min-width: 180px;       /* evita ficar estreito demais */
-  height: 44px;           /* altura consistente */
-  padding: 0 16px;
+.hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 8px; }
+.btn, .cta{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  font-weight:700; border-radius:12px; box-sizing:border-box;
-  white-space: nowrap;     /* não quebra “Baixar CV (PDF)”/“WhatsApp” */
+  padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06); cursor:pointer; text-decoration:none;
 }
+.btn:hover{ border-color:rgba(255,255,255,.28) }
+.cta{ background:linear-gradient(90deg, var(--c1), var(--c2)); color:#071018; font-weight:700; border:none; }
 
-/* ===== Indicadores (AJUSTE) ============================================== */
-/* força o conteúdo a ficar centralizado e SEM cortar texto */
 .stats{
   display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:10px;
 }
-.stat{
-  background:var(--glass); border:1px solid rgba(255,255,255,.1);
-  border-radius:14px; padding:12px; text-align:center;
-  min-height: 88px;                      /* caixas com a mesma altura */
-  display:flex; flex-direction:column; justify-content:center; gap:4px;
-}
-.stat b{ font-size: clamp(22px, 4vw, 32px); line-height:1.1; display:block; }
-.stat span{
-  font-size:.9rem; color:var(--muted); line-height:1.25;
-  white-space: normal;                   /* permite quebrar linha */
-  overflow-wrap:anywhere;                /* quebra se faltar espaço (inclui a barra) */
-  word-break:normal; hyphens:auto;
-}
+.stat{ background:var(--glass); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:12px; text-align:center }
+.stat b{ font-size: clamp(22px, 4vw, 32px); display:block }
+.stat span{ font-size:.9rem; color:var(--muted) }
 
-/* ===== Profile card ======================================================= */
 .profile-card{
   position:relative; padding:16px; border-radius:18px;
   background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
@@ -198,15 +178,6 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
   .cards{ grid-template-columns: 1fr }
   .contact{ grid-template-columns: 1fr }
   .list-grid{ grid-template-columns: 1fr }
-  /* textos menores nas caixinhas quando a tela for estreita */
-  .stat{ min-height: 84px; }
-  .stat span{ font-size:.88rem; }
-}
-@media (max-width: 400px){
-  /* em telas muito pequenas, garanta leitura do label */
-  .stat span{ font-size:.85rem; }
-  .hero-actions > .btn,
-  .hero-actions > .cta{ min-width: 150px; }
 }
 
 /* ===== Reduced Motion ====================================================== */
@@ -215,7 +186,6 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
   .bg-ornaments{ animation:none }
   .reveal{ transition:none }
 }
-
 /* ===== Tech Canvas (fundo) =============================================== */
 .tech-canvas{
   position:fixed; inset:0; z-index:-1;  /* acima da grid, atrás do conteúdo */
@@ -225,23 +195,30 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
 /* ===== Botões premium: glow + border gradient + ripple + shine =========== */
 .btn, .cta{
   position:relative; overflow:hidden;
-  isolation:isolate;
+  isolation:isolate; /* garante que ::before/::after recortem dentro do botão */
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   will-change: transform, box-shadow;
 }
+
+/* Borda gradiente suave */
 .btn::before, .cta::before{
   content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
   padding:1px; background:linear-gradient(90deg, var(--c1), var(--c2));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
+
+/* “Shine” ao passar o mouse */
 .btn::after, .cta::after{
   content:""; position:absolute; inset:-60%;
   transform:translateX(-120%) rotate(12deg);
   background:linear-gradient(90deg, transparent 0 40%, rgba(255,255,255,.25) 50%, transparent 60% 100%);
-  transition: transform .6s ease; pointer-events:none;
+  transition: transform .6s ease;
+  pointer-events:none;
 }
 .btn:hover::after, .cta:hover::after{ transform:translateX(120%) rotate(12deg); }
+
+/* Hover/Active com glow */
 .btn:hover, .cta:hover{
   transform: translateY(-1px);
   box-shadow: 0 10px 26px rgba(0,0,0,.35), 0 0 24px rgba(0,240,255,.20);
@@ -249,6 +226,39 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
 .btn:active, .cta:active{
   transform: translateY(0);
   box-shadow: 0 6px 16px rgba(0,0,0,.35), 0 0 12px rgba(0,240,255,.18);
+}
+
+/* Variante “primária” (opcional): aplique em qualquer <a class="btn btn--primary"> */
+.btn--primary{
+  background:linear-gradient(90deg, var(--c1), var(--c2));
+  color:#071018; font-weight:700; border:none;
+}
+.btn--ghost{
+  background:rgba(255,255,255,.04);
+}
+
+/* Chips mais responsivas ao toque */
+.chip{
+  transition: transform .15s ease, border-color .2s ease, background .2s ease;
+}
+.chip:hover{ transform: translateY(-1px); }
+.chip:active{ transform: translateY(0); }
+
+/* Ripple do clique */
+.ripple{
+  position:absolute; border-radius:50%; pointer-events:none;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 60%);
+  animation: ripple .6s ease-out forwards;
+  mix-blend-mode: screen;
+}
+@keyframes ripple{
+  to{ transform: translate(-50%, -50%) scale(12); opacity:0; }
+}
+
+/* Respeita acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  .btn::after, .cta::after{ display:none }
 }
 
 /* Remover sublinhado dos botões/CTAs em qualquer estado */
@@ -261,27 +271,150 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
 }
 
 /* (opcional) manter sublinhado só em links de texto do menu */
-a:hover{ text-decoration: none; }
+a:hover{ text-decoration: none; }            /* desativa global */
 .nav-links a:hover{ text-decoration: underline; }
 
 /* ===== Chips mais legíveis (acender texto) ================================ */
 #competencias .chip{
-  color: #eef6ff; font-weight: 600; letter-spacing: .2px;
+  color: #eef6ff;                /* texto claro */
+  font-weight: 600;              /* mais presença */
+  letter-spacing: .2px;
   background: rgba(255,255,255,.10);
   border-color: rgba(255,255,255,.28);
   text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 0 10px rgba(0,240,255,.25);
 }
+
 #competencias .chip:hover{
   background: rgba(255,255,255,.14);
   border-color: rgba(255,255,255,.4);
   text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 0 14px rgba(0,240,255,.35);
 }
+
 #competencias .chip:focus-visible{
   outline: 2px solid var(--c1);
   box-shadow: 0 0 0 3px rgba(0,240,255,.25);
 }
+
+/* Ativa/selecionada fica bem destacada e com texto escuro sobre o gradiente */
 #competencias .chip.active{
   background: linear-gradient(90deg, var(--c1), var(--c2));
-  color: #071018; border: none; text-shadow: none;
+  color: #071018;
+  border: none;
+  text-shadow: none;
 }
-#competencias .panel .list-grid li{ color:#f1f6ff; }
+
+/* (opcional) acender os itens da lista dentro do painel de competências */
+#competencias .panel .list-grid li{
+  color:#f1f6ff;
+}
+/* === Foto/Cartão de perfil mais compacto (desktop) ======================= */
+@media (min-width: 1020px){
+  .profile-card{
+    max-width: 380px;           /* ajuste principal */
+    justify-self: end;
+    padding: 14px;
+  }
+  .profile-card .avatar{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;        /* retrato elegante */
+    object-fit: cover;
+    object-position: center;
+  }
+}
+@media (min-width: 1440px){
+  .profile-card{ max-width: 420px; }  /* opcional: um pouco maior em telas bem grandes */
+}
+@media (max-width: 900px){
+  .profile-card{ max-width: 360px; margin-inline:auto; } /* centraliza no mobile */
+}
+
+/* === Botão "Menu": escondido no desktop, visível/bonito no mobile ======== */
+.menu-toggle{ display:none; }         /* desktop: some */
+
+@media (max-width: 920px){
+  .menu-toggle{
+    display:inline-flex;
+    align-items:center; gap:8px;
+    padding:8px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);
+    color:var(--fg);
+    cursor:pointer; font-weight:600;
+  }
+  /* ícone hambúrguer por CSS */
+  .menu-toggle::before{
+    content:"≡";
+    font-size:18px; line-height:1;
+    opacity:.9;
+  }
+  /* quando aberto, vira X e dá um destaque */
+  .menu-toggle[aria-expanded="true"]::before{ content:"✕"; }
+  .menu-toggle[aria-expanded="true"]{
+    background:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.28);
+  }
+}
+.nav-links a,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a:active{
+  text-decoration: none !important;
+}
+
+/* base dos itens do menu */
+.nav-links{
+  display:flex; gap:12px; align-items:center;
+}
+.nav-links a{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing:.2px;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+
+/* hover/focus com leve glow */
+.nav-links a:hover,
+.nav-links a:focus-visible{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35), 0 0 18px rgba(0,240,255,.12);
+  border-color: rgba(255,255,255,.28);
+  background: rgba(255,255,255,.08);
+  outline: none;
+}
+
+/* estado ativo (página atual) */
+.nav-links a[aria-current="page"],
+.nav-links a.active{
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.34);
+  box-shadow: 0 0 0 2px rgba(0,240,255,.16) inset, 0 0 24px rgba(0,240,255,.10);
+}
+
+/* CTA destacado (Baixar CV) */
+.nav-links a.cta{
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  color:#071018; font-weight:800; border:none;
+  padding:10px 16px;
+  box-shadow: var(--glow);
+}
+.nav-links a.cta:hover,
+.nav-links a.cta:focus-visible{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35), 0 0 26px rgba(0,240,255,.28);
+}
+
+/* mobile: links ocupam a largura e mantêm o visual de botão */
+@media (max-width: 920px){
+  .nav-links a{
+    width:100%;
+    padding:12px 14px;
+  }
+}
