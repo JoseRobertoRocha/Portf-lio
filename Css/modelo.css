@@ -72,7 +72,9 @@ nav{ position:relative; }
   background:rgba(255,255,255,.06); color:var(--fg); cursor:pointer;
 }
 .nav-links{ display:flex; gap:16px; align-items:center; }
-.nav-links a{ padding:10px 12px; border-radius:10px; border:1px solid transparent; }
+.nav-links a{
+  padding:10px 12px; border-radius:10px; border:1px solid transparent;
+}
 .nav-links a.cta{
   background:linear-gradient(90deg, var(--c1), var(--c2));
   color:#071018; font-weight:700; padding:10px 14px; border-radius:12px; box-shadow:var(--glow);
@@ -101,57 +103,43 @@ nav{ position:relative; }
 h1{ font-size: clamp(28px, 5vw, 48px); line-height:1.1; margin:10px 0 0; }
 .lead{ font-size:1.05rem; color:var(--muted); max-width:65ch }
 
-/* ===== BOTÕES DO HERO – alinhados, iguais e responsivos =================== */
+/* ===== Botões do herói (AJUSTE) ========================================== */
+/* mantém flex + deixa todos os botões do mesmo tamanho e alinhados */
 .hero-actions{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* auto-fit em qualquer tela */
-  gap:12px;
-  margin:16px 0 8px;
+  display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 8px;
+  align-items:stretch;
 }
-.hero-actions .btn,
-.hero-actions .cta{
-  width:100%;
-  height:44px;
-  padding:0 16px;
-  font-weight:700;
-  border-radius:14px;
+.hero-actions > .btn,
+.hero-actions > .cta{
+  flex: 1 1 200px;        /* todos crescem/encolhem igualmente e quebram quando faltar espaço */
+  min-width: 180px;       /* evita ficar estreito demais */
+  height: 44px;           /* altura consistente */
+  padding: 0 16px;
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-  text-decoration:none;
-}
-.btn:hover{ border-color:rgba(255,255,255,.28) }
-.cta{
-  background:linear-gradient(90deg, var(--c1), var(--c2));
-  color:#071018; font-weight:800; border:none;
+  font-weight:700; border-radius:12px; box-sizing:border-box;
+  white-space: nowrap;     /* não quebra “Baixar CV (PDF)”/“WhatsApp” */
 }
 
-/* ===== Indicadores (stats) – legíveis e sem corte ========================= */
+/* ===== Indicadores (AJUSTE) ============================================== */
+/* força o conteúdo a ficar centralizado e SEM cortar texto */
 .stats{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* adapta: 1,2 ou 3 por linha */
-  gap:12px; margin-top:10px;
+  display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:10px;
 }
 .stat{
-  background:var(--glass);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:14px;
-  padding:12px;
-  text-align:center;
-  min-height:86px;                        /* altura consistente */
+  background:var(--glass); border:1px solid rgba(255,255,255,.1);
+  border-radius:14px; padding:12px; text-align:center;
+  min-height: 88px;                      /* caixas com a mesma altura */
   display:flex; flex-direction:column; justify-content:center; gap:4px;
 }
-.stat b{
-  font-size: clamp(22px, 4vw, 32px);
-  display:block; line-height:1.1;
-}
+.stat b{ font-size: clamp(22px, 4vw, 32px); line-height:1.1; display:block; }
 .stat span{
-  font-size: clamp(.85rem, 1.6vw, .95rem);
-  color:var(--muted);
-  line-height:1.25;
-  white-space:normal; word-break:keep-all; hyphens:auto; /* evita corte de “Implantações/loja” */
+  font-size:.9rem; color:var(--muted); line-height:1.25;
+  white-space: normal;                   /* permite quebrar linha */
+  overflow-wrap:anywhere;                /* quebra se faltar espaço (inclui a barra) */
+  word-break:normal; hyphens:auto;
 }
 
+/* ===== Profile card ======================================================= */
 .profile-card{
   position:relative; padding:16px; border-radius:18px;
   background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
@@ -203,14 +191,23 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
 /* ===== Focus states & a11y =============================================== */
 :focus-visible{ outline:2px solid var(--c1); outline-offset:2px; border-radius:10px }
 
-/* ===== Responsive extras ================================================== */
-/* foto do perfil mais compacta no desktop e centrada no mobile */
-@media (min-width: 1020px){
-  .profile-card{ max-width: 380px; justify-self:end; padding:14px; }
-  .profile-card .avatar{ aspect-ratio:4/5; object-position:center; }
+/* ===== Responsive ========================================================== */
+@media (max-width: 1020px){
+  .hero-grid{ grid-template-columns: 1fr }
+  .profile-card{ order:-1 }
+  .cards{ grid-template-columns: 1fr }
+  .contact{ grid-template-columns: 1fr }
+  .list-grid{ grid-template-columns: 1fr }
+  /* textos menores nas caixinhas quando a tela for estreita */
+  .stat{ min-height: 84px; }
+  .stat span{ font-size:.88rem; }
 }
-@media (min-width: 1440px){ .profile-card{ max-width:420px; } }
-@media (max-width: 900px){ .profile-card{ max-width:360px; margin-inline:auto; } }
+@media (max-width: 400px){
+  /* em telas muito pequenas, garanta leitura do label */
+  .stat span{ font-size:.85rem; }
+  .hero-actions > .btn,
+  .hero-actions > .cta{ min-width: 150px; }
+}
 
 /* ===== Reduced Motion ====================================================== */
 @media (prefers-reduced-motion: reduce){
@@ -221,11 +218,11 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
 
 /* ===== Tech Canvas (fundo) =============================================== */
 .tech-canvas{
-  position:fixed; inset:0; z-index:-1;
+  position:fixed; inset:0; z-index:-1;  /* acima da grid, atrás do conteúdo */
   pointer-events:none;
 }
 
-/* ===== Botões com glow/borda/shine ======================================= */
+/* ===== Botões premium: glow + border gradient + ripple + shine =========== */
 .btn, .cta{
   position:relative; overflow:hidden;
   isolation:isolate;
@@ -245,37 +242,31 @@ footer{ padding:20px 0 32px; color:var(--muted); text-align:center }
   transition: transform .6s ease; pointer-events:none;
 }
 .btn:hover::after, .cta:hover::after{ transform:translateX(120%) rotate(12deg); }
-.btn:hover, .cta:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0,0,0,.35), 0 0 24px rgba(0,240,255,.20); }
-.btn:active, .cta:active{ transform: translateY(0); box-shadow: 0 6px 16px rgba(0,0,0,.35), 0 0 12px rgba(0,240,255,.18); }
-.btn--primary{ background:linear-gradient(90deg, var(--c1), var(--c2)); color:#071018; font-weight:700; border:none; }
-.btn--ghost{ background:rgba(255,255,255,.04); }
-
-/* Ripple */
-.ripple{
-  position:absolute; border-radius:50%; pointer-events:none;
-  transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 60%);
-  animation: ripple .6s ease-out forwards;
-  mix-blend-mode: screen;
+.btn:hover, .cta:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35), 0 0 24px rgba(0,240,255,.20);
 }
-@keyframes ripple{ to{ transform: translate(-50%, -50%) scale(12); opacity:0; } }
-
-@media (prefers-reduced-motion: reduce){ .btn::after, .cta::after{ display:none } }
+.btn:active, .cta:active{
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0,0,0,.35), 0 0 12px rgba(0,240,255,.18);
+}
 
 /* Remover sublinhado dos botões/CTAs em qualquer estado */
 .btn, .cta,
 .btn:visited, .cta:visited,
 .btn:hover, .cta:hover,
 .btn:focus, .cta:focus,
-.btn:active, .cta:active{ text-decoration: none !important; }
+.btn:active, .cta:active{
+  text-decoration: none !important;
+}
 
-/* manter sublinhado só nos links do menu (opcional) */
+/* (opcional) manter sublinhado só em links de texto do menu */
 a:hover{ text-decoration: none; }
 .nav-links a:hover{ text-decoration: underline; }
 
-/* ===== Chips mais legíveis =============================================== */
+/* ===== Chips mais legíveis (acender texto) ================================ */
 #competencias .chip{
-  color:#eef6ff; font-weight:600; letter-spacing:.2px;
+  color: #eef6ff; font-weight: 600; letter-spacing: .2px;
   background: rgba(255,255,255,.10);
   border-color: rgba(255,255,255,.28);
   text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 0 10px rgba(0,240,255,.25);
@@ -286,10 +277,11 @@ a:hover{ text-decoration: none; }
   text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 0 14px rgba(0,240,255,.35);
 }
 #competencias .chip:focus-visible{
-  outline: 2px solid var(--c1); box-shadow: 0 0 0 3px rgba(0,240,255,.25);
+  outline: 2px solid var(--c1);
+  box-shadow: 0 0 0 3px rgba(0,240,255,.25);
 }
 #competencias .chip.active{
   background: linear-gradient(90deg, var(--c1), var(--c2));
-  color: #071018; border: none; text-shadow:none;
+  color: #071018; border: none; text-shadow: none;
 }
 #competencias .panel .list-grid li{ color:#f1f6ff; }
