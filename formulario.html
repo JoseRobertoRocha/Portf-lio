@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contratar - Jose Roberto Rocha</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+ 
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  
+  <link href="assets/css/principal.css" rel="stylesheet">
+  <link href="formulario.css" rel="stylesheet">
+
+</head>
+
+<body class="formulario-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Sobre.html">Sobre</a></li>
+          <li><a href="curriculo.html">Currículo</a></li>
+          <li><a href="conhecimentos.html">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="formulario.html" class="active">Contratar</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="https://www.facebook.com/share/17ExbVKmdt/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/juniior_roochaa?igsh=MWozaDkxMXZpb3FybQ==" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/jose-roberto-rocha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section id="formulario" class="formulario section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contratar</h2>
+        <p>Preencha o formulário abaixo para que eu possa entender melhor suas necessidades.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <form id="clientForm" class="formulario-form">
+              
+              <!-- Dados Pessoais -->
+              <div class="form-section" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="bi bi-person-fill"></i> Dados Pessoais</h3>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="nome" class="form-label">Nome Completo *</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">E-mail *</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="telefone" class="form-label">Telefone *</label>
+                    <input type="tel" class="form-control" id="telefone" name="telefone" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="empresa" class="form-label">Empresa</label>
+                    <input type="text" class="form-control" id="empresa" name="empresa">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sobre o Projeto -->
+              <div class="form-section" data-aos="fade-up" data-aos-delay="300">
+                <h3><i class="bi bi-briefcase-fill"></i> Sobre o Projeto</h3>
+                <div class="mb-3">
+                  <label for="tipoServico" class="form-label">Tipo de Serviço *</label>
+                  <select class="form-control" id="tipoServico" name="tipoServico" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="web-design">Sites Institucionais</option>
+                    <option value="desenvolvimento">Loja Online</option>
+                    <option value="manutencao">Suporte Técnico</option>
+                    <option value="manutencao">Futebol</option>
+                    <option value="suporte-ti">Landing Page</option>
+                    <option value="consultoria">Chatbot</option>
+                    <option value="manutencao">Sistemas Personalizados</option>
+                    <option value="outro">Outros</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="descricaoProjeto" class="form-label">Descreva seu projeto *</label>
+                  <textarea class="form-control" id="descricaoProjeto" name="descricaoProjeto" rows="4" required placeholder="Conte-me mais detalhes sobre o que você precisa..."></textarea>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="prazo" class="form-label">Prazo desejado</label>
+                    <select class="form-control" id="prazo" name="prazo">
+                      <option value="">Selecione</option>
+                      <option value="urgente">Urgente (até 1 semana)</option>
+                      <option value="rapido">Rápido (até 2 semanas)</option>
+                      <option value="normal">Normal (até 1 mês)</option>
+                      <option value="flexivel">Flexível (mais de 1 mês)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="orcamento" class="form-label">Orçamento estimado</label>
+                    <select class="form-control" id="orcamento" name="orcamento">
+                      <option value="">Selecione</option>
+                      <option value="ate-700">Até R$ 700</option>
+                      <option value="700-1500">R$ 700 - R$ 2.500</option>
+                      <option value="1500-3000">R$ 2.500 - R$ 3.500</option>
+                      <option value="acima-3000">Acima de R$ 3.500</option>
+                      <option value="conversar">Prefiro conversar</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preferências -->
+              <div class="form-section" data-aos="fade-up" data-aos-delay="400">
+                <h3><i class="bi bi-gear-fill"></i> Preferências</h3>
+                <div class="mb-3">
+                  <label class="form-label">Como conheceu meu trabalho? *</label>
+                  <div class="form-check-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comoConheceu" id="indicacao" value="indicacao" required>
+                      <label class="form-check-label" for="indicacao">Instagram</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comoConheceu" id="redes-sociais" value="redes-sociais" required>
+                      <label class="form-check-label" for="redes-sociais">Portfólio</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comoConheceu" id="google" value="google" required>
+                      <label class="form-check-label" for="google">Google</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comoConheceu" id="portfolio" value="portfolio" required>
+                      <label class="form-check-label" for="portfolio">Indicação</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comoConheceu" id="outro-meio" value="outro" required>
+                      <label class="form-check-label" for="outro-meio">Outros</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="preferenciaContato" class="form-label">Melhor forma de contato</label>
+                  <select class="form-control" id="preferenciaContato" name="preferenciaContato">
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="email">E-mail</option>
+                    <option value="telefone">Telefone</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="observacoes" class="form-label">Observações adicionais</label>
+                  <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Alguma informação adicional que gostaria de compartilhar?"></textarea>
+                </div>
+              </div>
+
+              <!-- Botão de Envio -->
+              <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="bi bi-send"></i> Solicitar Orçamento
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center ">
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.facebook.com/share/17ExbVKmdt/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/juniior_roochaa?igsh=MWozaDkxMXZpb3FybQ==" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/jose-roberto-rocha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=admin_app" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        Desenvolvido por <a href="#">Jose Roberto Rocha</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script src="assets/js/principal.js"></script>
+  <script src="formulario.js"></script>
+
+</body>
+
+</html>
