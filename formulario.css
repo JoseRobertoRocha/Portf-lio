@@ -274,3 +274,118 @@ textarea.form-control {
     font-size: 1rem;
   }
 }
+
+/* Estilos para Range Slider (Barra de Valores) */
+.range-container {
+  position: relative;
+  margin: 15px 0;
+}
+
+.form-range {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #2c3e50 0%, #1387c1 100%);
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1387c1;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(19, 135, 193, 0.5);
+  transition: all 0.3s ease;
+}
+
+.form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(19, 135, 193, 0.7);
+}
+
+.form-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1387c1;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(19, 135, 193, 0.5);
+  transition: all 0.3s ease;
+}
+
+.form-range::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(19, 135, 193, 0.7);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.range-min, .range-max {
+  color: #ffffff;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.range-value {
+  background: var(--accent-color);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(19, 135, 193, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(19, 135, 193, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(19, 135, 193, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(19, 135, 193, 0.3);
+  }
+}
+
+/* Texto de ajuda para range slider */
+.form-text.text-muted {
+  color: #ffffff !important;
+  opacity: 0.8;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* Responsividade para Range Slider */
+@media (max-width: 768px) {
+  .range-labels {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .range-value {
+    order: -1;
+    margin-bottom: 10px;
+  }
+  
+  .range-min, .range-max {
+    display: none;
+  }
+}
