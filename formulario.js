@@ -26,6 +26,39 @@ document.addEventListener('DOMContentLoaded', function() {
         formatarTelefone(this);
     });
     
+    // Função para formatar valores do range slider
+    function formatarValorRange(valor) {
+        const numero = parseInt(valor);
+        
+        if (numero >= 10000) {
+            return 'R$ 10.000+';
+        }
+        
+        return numero.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+    }
+    
+    // Configurar Range Slider de Orçamento
+    const orcamentoRange = document.getElementById('orcamento');
+    const orcamentoValue = document.getElementById('orcamentoValue');
+    
+    // Atualizar valor exibido quando o slider muda
+    orcamentoRange.addEventListener('input', function() {
+        const valorFormatado = formatarValorRange(this.value);
+        orcamentoValue.textContent = valorFormatado;
+        
+        // Atualizar gradient do slider baseado na posição
+        const porcentagem = ((this.value - this.min) / (this.max - this.min)) * 100;
+        this.style.background = `linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) ${porcentagem}%, var(--background-color) ${porcentagem}%, var(--background-color) 100%)`;
+    });
+    
+    // Inicializar o valor do slider
+    orcamentoValue.textContent = formatarValorRange(orcamentoRange.value);
+    
     // Validação em tempo real
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
@@ -153,14 +186,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function getTextoOrcamento(valor) {
-        const orcamentos = {
-            'ate-700': 'Até R$ 700',
-            '700-1500': 'R$ 700 - R$ 2.500',
-            '1500-3000': 'R$ 2.500 - R$ 3.500',
-            'acima-3000': 'Acima de R$ 3.500',
-            'conversar': 'Prefiro conversar'
-        };
-        return orcamentos[valor] || 'Não informado';
+        // Como agora é um range slider, formata o valor numérico
+        if (valor && valor !== '') {
+            return formatarValorRange(valor);
+        }
+        return 'Não informado';
     }
     
     function getTextoComoConheceu(valor) {
