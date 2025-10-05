@@ -147,14 +147,15 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="orcamento" class="form-label">Orçamento estimado</label>
-                    <select class="form-control" id="orcamento" name="orcamento">
-                      <option value="">Selecione</option>
-                      <option value="ate-700">Até R$ 700</option>
-                      <option value="700-1500">R$ 700 - R$ 2.500</option>
-                      <option value="1500-3000">R$ 2.500 - R$ 3.500</option>
-                      <option value="acima-3000">Acima de R$ 3.500</option>
-                      <option value="conversar">Prefiro conversar</option>
-                    </select>
+                    <div class="range-container">
+                      <input type="range" class="form-range" id="orcamento" name="orcamento" min="500" max="10000" step="250" value="2500">
+                      <div class="range-labels">
+                        <span class="range-min">R$ 500</span>
+                        <span class="range-value" id="orcamentoValue">R$ 2.500</span>
+                        <span class="range-max">R$ 10.000+</span>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted">💡 Arraste para ajustar o valor desejado</small>
                   </div>
                 </div>
               </div>
