@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Adicionar máscara ao telefone
     const telefoneInput = document.getElementById('telefone');
-    telefoneInput.addEventListener('input', function() {
-        formatarTelefone(this);
-    });
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function() {
+            formatarTelefone(this);
+        });
+    }
     
     // Função para formatar valores do range slider
     function formatarValorRange(valor) {
@@ -46,18 +48,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const orcamentoRange = document.getElementById('orcamento');
     const orcamentoValue = document.getElementById('orcamentoValue');
     
-    // Atualizar valor exibido quando o slider muda
-    orcamentoRange.addEventListener('input', function() {
-        const valorFormatado = formatarValorRange(this.value);
-        orcamentoValue.textContent = valorFormatado;
+    // Verificar se os elementos existem antes de adicionar eventos
+    if (orcamentoRange && orcamentoValue) {
+        // Atualizar valor exibido quando o slider muda
+        orcamentoRange.addEventListener('input', function() {
+            const valorFormatado = formatarValorRange(this.value);
+            orcamentoValue.textContent = valorFormatado;
+            
+            // Atualizar gradient do slider baseado na posição
+            const porcentagem = ((this.value - this.min) / (this.max - this.min)) * 100;
+            this.style.background = `linear-gradient(to right, #1387c1 0%, #1387c1 ${porcentagem}%, #2c3e50 ${porcentagem}%, #2c3e50 100%)`;
+        });
         
-        // Atualizar gradient do slider baseado na posição
-        const porcentagem = ((this.value - this.min) / (this.max - this.min)) * 100;
-        this.style.background = `linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) ${porcentagem}%, var(--background-color) ${porcentagem}%, var(--background-color) 100%)`;
-    });
-    
-    // Inicializar o valor do slider
-    orcamentoValue.textContent = formatarValorRange(orcamentoRange.value);
+        // Inicializar o valor do slider
+        orcamentoValue.textContent = formatarValorRange(orcamentoRange.value);
+    }
     
     // Validação em tempo real
     const requiredFields = form.querySelectorAll('[required]');
@@ -327,7 +332,7 @@ function adicionarLinkFormulario() {
     const navMenu = document.querySelector('#navmenu ul');
     if (navMenu && !document.querySelector('a[href="formulario.html"]')) {
         const li = document.createElement('li');
-        li.innerHTML = '<a href="formulario.html">Formulário</a>';
+        li.innerHTML = '<a href="formulario.html">Contratar</a>';
         navMenu.appendChild(li);
     }
 }
