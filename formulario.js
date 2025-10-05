@@ -112,12 +112,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funções auxiliares para converter valores
     function getTextoServico(valor) {
         const servicos = {
-            'web-design': 'Web Design',
-            'desenvolvimento': 'Desenvolvimento Web',
-            'suporte-ti': 'Suporte de TI',
-            'consultoria': 'Consultoria em Sistemas',
-            'manutencao': 'Manutenção de Equipamentos',
-            'outro': 'Outro'
+            // Desenvolvimento Web
+            'site-institucional': '🏢 Site Institucional',
+            'loja-online': '🛒 E-commerce / Loja Online',
+            'landing-page': '📄 Landing Page',
+            'portfolio': '🎨 Portfólio Profissional',
+            'blog': '📰 Blog / Site de Notícias',
+            
+            // Automação e IA
+            'chatbot': '💬 Chatbot Inteligente',
+            'automacao-whatsapp': '📱 Automação WhatsApp',
+            'assistente-virtual': '🤖 Assistente Virtual',
+            
+            // Sistemas e Suporte
+            'sistema-personalizado': '⚙️ Sistema Personalizado',
+            'suporte-tecnico': '🔧 Suporte Técnico',
+            'manutencao-site': '🔄 Manutenção de Site',
+            'consultoria-ti': '💡 Consultoria em TI',
+            
+            // Projetos Especiais
+            'gestao-futebol': '⚽ Gestão de Futebol',
+            'app-esportivo': '🏆 Aplicativo Esportivo',
+            
+            // Outros Serviços
+            'consultoria-digital': '📈 Consultoria Digital',
+            'treinamento': '🎓 Treinamento em Sistemas',
+            'outro': '🔍 Outro'
         };
         return servicos[valor] || valor;
     }
@@ -134,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getTextoOrcamento(valor) {
         const orcamentos = {
-            'ate-500': 'Até R$ 500',
-            '500-1500': 'R$ 500 - R$ 1.500',
-            '1500-3000': 'R$ 1.500 - R$ 3.000',
-            'acima-3000': 'Acima de R$ 3.000',
+            'ate-700': 'Até R$ 700',
+            '700-1500': 'R$ 700 - R$ 2.500',
+            '1500-3000': 'R$ 2.500 - R$ 3.500',
+            'acima-3000': 'Acima de R$ 3.500',
             'conversar': 'Prefiro conversar'
         };
         return orcamentos[valor] || 'Não informado';
@@ -145,11 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getTextoComoConheceu(valor) {
         const meios = {
-            'indicacao': 'Indicação',
-            'redes-sociais': 'Redes Sociais',
+            'indicacao': 'Instagram',
+            'redes-sociais': 'Portfólio',
             'google': 'Google',
-            'portfolio': 'Portfólio Online',
-            'outro': 'Outro'
+            'portfolio': 'Indicação',
+            'outro': 'Outros'
         };
         return meios[valor] || valor;
     }
