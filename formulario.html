@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -100,15 +100,34 @@
                 <div class="mb-3">
                   <label for="tipoServico" class="form-label">Tipo de Serviço *</label>
                   <select class="form-control" id="tipoServico" name="tipoServico" required>
-                    <option value="">Selecione uma opção</option>
-                    <option value="web-design">Sites Institucionais</option>
-                    <option value="desenvolvimento">Loja Online</option>
-                    <option value="manutencao">Suporte Técnico</option>
-                    <option value="manutencao">Futebol</option>
-                    <option value="suporte-ti">Landing Page</option>
-                    <option value="consultoria">Chatbot</option>
-                    <option value="manutencao">Sistemas Personalizados</option>
-                    <option value="outro">Outros</option>
+                    <option value="">🎯 Selecione o serviço desejado</option>
+                    <optgroup label="💻 Desenvolvimento Web">
+                      <option value="site-institucional">🏢 Site Institucional</option>
+                      <option value="loja-online">🛒 E-commerce / Loja Online</option>
+                      <option value="landing-page">📄 Landing Page</option>
+                      <option value="portfolio">🎨 Portfólio Profissional</option>
+                      <option value="blog">📰 Blog / Site de Notícias</option>
+                    </optgroup>
+                    <optgroup label="🤖 Automação e IA">
+                      <option value="chatbot">💬 Chatbot Inteligente</option>
+                      <option value="automacao-whatsapp">📱 Automação WhatsApp</option>
+                      <option value="assistente-virtual">🤖 Assistente Virtual</option>
+                    </optgroup>
+                    <optgroup label="🛠️ Sistemas e Suporte">
+                      <option value="sistema-personalizado">⚙️ Sistema Personalizado</option>
+                      <option value="suporte-tecnico">🔧 Suporte Técnico</option>
+                      <option value="manutencao-site">🔄 Manutenção de Site</option>
+                      <option value="consultoria-ti">💡 Consultoria em TI</option>
+                    </optgroup>
+                    <optgroup label="⚽ Projetos Especiais">
+                      <option value="gestao-futebol">⚽ Gestão de Futebol</option>
+                      <option value="app-esportivo">🏆 Aplicativo Esportivo</option>
+                    </optgroup>
+                    <optgroup label="📊 Outros Serviços">
+                      <option value="consultoria-digital">📈 Consultoria Digital</option>
+                      <option value="treinamento">🎓 Treinamento em Sistemas</option>
+                      <option value="outro">🔍 Outro (especificar na descrição)</option>
+                    </optgroup>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -130,10 +149,10 @@
                     <label for="orcamento" class="form-label">Orçamento estimado</label>
                     <select class="form-control" id="orcamento" name="orcamento">
                       <option value="">Selecione</option>
-                      <option value="ate-700">Até R$ 700</option>
-                      <option value="700-1500">R$ 700 - R$ 2.500</option>
-                      <option value="1500-3000">R$ 2.500 - R$ 3.500</option>
-                      <option value="acima-3000">Acima de R$ 3.500</option>
+                      <option value="ate-1000">Até R$ 1.000</option>
+                      <option value="1000-2500">R$ 1.000 - R$ 2.500</option>
+                      <option value="2500-3500">R$ 2.500 - R$ 3.500</option>
+                      <option value="acima-3500">Acima de R$ 3.500</option>
                       <option value="conversar">Prefiro conversar</option>
                     </select>
                   </div>
@@ -231,7 +250,4 @@
 
 </body>
 
-
 </html>
-
-
